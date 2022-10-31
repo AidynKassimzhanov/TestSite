@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/style3.css" %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="information">
+        </div>
+        <div class="testBlock">
+            <div class="question" id="question">
+                {{ q.question }}
+            </div>
+            <div class="answers">
+
+                <form method="post" action="">
+                    {% for el in a %}
+                    <p>
+                        <input type="radio" value="{{el.ball}}" name="answer" class="answer" id="answer1"> 
+                        <span>
+                            {{ el.name }}
+                        </span>
+                    </p>
+                    {% endfor %}
+
+                    <input class="buttons" id="send" type="submit" value="Қабылдау" /> 
+
+                    {% comment %} <button class="buttons" id="next"> >> </button>
+                    <button class="buttons" id="prev"> << </button> {% endcomment %}
+                                        
+                    {{q.id}}
+
+                    {% csrf_token %}
+                </form>
+            </div>
+{% comment %} 
+            <div>
+                {% for qu in qq %}
+                    <p>
+                       {{qu.id}} 
+                    </p>
+                    
+                {% endfor %}
+                
+            </div> {% endcomment %}
+
+        </div>
+    </div>
+    <div id="el">
+
+    </div>
+    <script defer src="{% static "js/script7.js" %} "></script>
+</body>
+</html>
