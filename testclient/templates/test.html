@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Test Home</h1>
+
+    {% if tst %}
+
+    <form method="post" id="startform" action="starttest/">
+        <p>
+            <label for="testid">Выберите тест:</label>
+            <select id="testid" name="test">
+                {% for dis in tst %}
+                <option value="{{dis.id}}"> {{dis.name}} </option>
+                {% endfor %}
+            </select>
+
+
+        </p>
+
+        <p>
+            <label for="userid">Выберите пользователя2:</label>
+            <select id="userid" name="user">
+                {% for dis in usr %}
+                <option value="{{dis.id}}"> {{dis.first_name}} {{dis.last_name}}  </option>
+                {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <input type="submit" value="Начать" id="startbtn" />
+        </p>
+
+        {% csrf_token %}
+
+    </form>    
+
+    <div id="dd"></div>    
+    {% else %}
+      <p>There are no tests in the DB.</p>
+    {% endif %} 
+
+    
+{% endblock %}

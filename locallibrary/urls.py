@@ -51,3 +51,7 @@ urlpatterns += [
      path('test/', include('tst.urls')),
 ]
 
+urlpatterns += [
+     path('testclient/', include('testclient.urls')),
+     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+]

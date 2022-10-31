@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/style3.css" %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="information">
+        </div>
+        <div class="testBlock">
+            <form method="post" action="" name="myForm">
+                <input type="text" name="current" hidden value="{{i.current}}" id="current"> 
+                <input type="text" name="start" hidden value="{{i.start}}" id="start"> 
+                <input type="text" name="end" hidden value="{{i.end}}" id="end"> 
+                <input type="text" name="choice" hidden value="{{i.choice}}" id="choice"> 
+                <input type="text" name="stats" hidden value="{{i.stat}}" id="choice"> 
+                <div> {{i.current}} </div>
+                <div class="question" id="question">
+                    {{ q.question }}
+                </div>
+                <div class="answers">
+
+                    
+                        <div id="p">
+                            {% for el in a %}
+                            <p class="panswers">
+
+                                {% if i.choice == el.id %}
+                                <input type="radio" value="{{el.ball}}" checked name="answer" class="answer" id="{{el.id}}"> 
+                                {%else%}
+                                <input type="radio" value="{{el.ball}}" name="answer" class="answer" id="{{el.id}}"> 
+                                {% endif %}
+                                <span>
+                                    {{ el.name }}
+                                </span>
+                            </p>
+                            {% endfor %}
+        
+                            
+    
+                        </div>
+
+                        <input class="buttons" id="send" type="submit" value="Қабылдау" /> 
+                            
+                            
+                            <button class="buttons" id="next"> >> </button>
+
+
+                            <button class="buttons" id="prev"> << </button>
+                        {% csrf_token %}
+                    
+                </div>
+            </form>
+{% comment %} 
+            <div>
+                {% for qu in qq %}
+                    <p>
+                       {{qu.id}} 
+                    </p>
+                    
+                {% endfor %}
+                
+            </div> {% endcomment %}
+
+        </div>
+    </div>
+    <div id="el">
+
+    </div>
+    <script defer src="{% static "js/myscript.js" %} "></script>
+</body>
+</html>

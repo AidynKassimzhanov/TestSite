@@ -33,11 +33,16 @@ class AnswerAdmin(admin.ModelAdmin):
     
 admin.site.register(Answers, AnswerAdmin)
 
-class StatsAdmin(admin.ModelAdmin):
-    list_display = ('user', 'test', 'result', 'time')
+class TmpInline(admin.TabularInline):
+    model = TmpTest
 
+class StatsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'test', 'end', 'result', 'timebegin', 'timeend')
+    inlines = [TmpInline]
 admin.site.register(Stats, StatsAdmin)
 
 class TmpAdmin(admin.ModelAdmin):
-    list_display = ('id', 'qid', 'ans', 'ball')
+    list_display = ('stat', 'id', 'qid', 'ans', 'ball', 'choice')
+    list_filter = ("stat", )
+
 admin.site.register(TmpTest, TmpAdmin)

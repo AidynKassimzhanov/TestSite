@@ -17,6 +17,11 @@ body {
     /* text-align: center; */
 }
 
+
+#p {
+    height: 300px;
+}
+
 .information {
     height: 100px;
     background-color: rgb(240, 240, 220);
@@ -57,7 +62,7 @@ p input {
 
 .buttons {
     float: right;
-    width: 250px;
+    width: 200px;
     height: 40px;
     font-size: 25px;
     background: inherit;

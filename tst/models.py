@@ -69,7 +69,12 @@ class Stats(models.Model):
     test = models.ForeignKey(Tests, on_delete=models.SET_NULL, null=True)
     
     result = models.IntegerField()
-    time = models.DateTimeField(auto_now_add = True, verbose_name = 'create time')
+    end = models.BooleanField(default=False)
+    timebegin = models.DateTimeField(auto_now_add = True, verbose_name = 'create time')
+    timeend = models.DateTimeField(auto_now_add = True, verbose_name = 'end time')
+    
+    def __str__(self):
+        return f"{self.id}, {self.user}, {self.test}"
 
 
 # Специальная таблица, которую использует генератор тестов, чтобы сохранить промежуточную информацию
@@ -85,3 +90,5 @@ class TmpTest(models.Model):
     qid = models.IntegerField()
     ball = models.IntegerField(default=0)
     ans = models.BooleanField(default=False)
+    choice = models.IntegerField(default=0)
+    stat = models.ForeignKey(Stats, on_delete=models.SET_NULL, null=True)
